@@ -22,17 +22,19 @@ jobs:
 
       - name: Create separate artifacts
         run: |
-          for file in ./distr/*.zip; do
-            artifact_name=$(basename "$file" .zip)
+          Get-ChildItem -Path ./distr/*.zip | ForEach-Object {
+            $artifact_name = $_.BaseName
+            Write-Host "Artifact name: $artifact_name"
+            Write-Host "Artifact path: $_.FullName"
             echo "::set-output name=artifact_name::$artifact_name"
-            echo "::set-output name=artifact_path::$file"
-          done
+            echo "::set-output name=artifact_path::$_.FullName"
+          }
 
       - name: Upload separate artifacts
         run: |
-          echo "Uploading separate artifacts..."
-          for file in ./distr/*.zip; do
-            artifact_name=$(basename "$file" .zip)
-            echo "Uploading $artifact_name..."
-            echo "::set-env name=$artifact_name::$file"
-          done
+          Write-Host "Uploading separate artifacts..."
+          Get-ChildItem -Path ./distr/*.zip | ForEach-Object {
+            $artifact_name = $_.BaseName
+            Write-Host "Uploading $artifact_name..."
+            echo "::set-env name=$artifact_name::$_.FullName"
+          }
