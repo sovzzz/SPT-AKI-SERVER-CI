@@ -25,3 +25,22 @@ jobs:
         with:
           name: my-artifacts
           path: ./distr/*.zip
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifacts
+
+      - name: Upload to WebDAV
+        uses: tszalbot/action-upload-webdav@v1
+        with:
+            webdav_address: ${{secrets.address}}
+            webdav_username: ${{secrets.username}}
+            webdav_password: ${{secrets.password}}
+            webdav_upload_path: "/AkiServer"
+            files: "./distr/**"
