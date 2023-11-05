@@ -6,7 +6,13 @@ cd Server
 git fetch --all
 # 获取所有分支的名称
 #$branches = git branch -a | Select-String -Pattern "remotes/origin" | ForEach-Object { $_.Line.Trim() -replace "remotes/origin/", "" }
-$branches = git branch -a | Select-String -Pattern "remotes/origin" -NotMatch "HEAD ->" | ForEach-Object { $_.Line.Trim() -replace "remotes/origin/", "" }
+#$branches = git branch -a | Select-String -Pattern "remotes/origin" -NotMatch "HEAD ->" | ForEach-Object { $_.Line.Trim() -replace "remotes/origin/", "" }
+$branches = git branch -a | Select-String -Pattern "remotes/origin" | ForEach-Object { 
+    $branch = $_.Line.Trim() -replace "remotes/origin/", ""
+    if ($branch -notmatch "HEAD ->") {
+        $branch
+    }
+}
 
 # 遍历每个分支
 foreach ($branch in $branches) {
