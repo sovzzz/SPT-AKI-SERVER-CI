@@ -21,20 +21,16 @@ jobs:
         run: .\BuildServer.ps1
 
       - name: Create separate artifacts
+        id: create-artifacts
         run: |
           Get-ChildItem -Path ./distr/*.zip | ForEach-Object {
             $artifact_name = $_.BaseName
-            Write-Host "Artifact name: $artifact_name"
-            Write-Host "Artifact path: $_.FullName"
             echo "::set-output name=artifact_name::$artifact_name"
             echo "::set-output name=artifact_path::$_.FullName"
           }
 
       - name: Upload separate artifacts
         run: |
-          Write-Host "Uploading separate artifacts..."
-          Get-ChildItem -Path ./distr/*.zip | ForEach-Object {
-            $artifact_name = $_.BaseName
-            Write-Host "Uploading $artifact_name..."
-            echo "::set-env name=$artifact_name::$_.FullName"
-          }
+          echo "Uploading separate artifacts..."
+          echo "Artifact name: ${{ steps.create-artifacts.outputs.artifact_name }}"
+          echo "Artifact path: ${{ steps.create-artifacts.outputs.artifact_path }}"
