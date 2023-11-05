@@ -1,6 +1,8 @@
 name: Build and Upload Artifacts
 
 on:
+  schedule:
+    - cron: '0 4 * * *'
   push:
     branches:
       - main
