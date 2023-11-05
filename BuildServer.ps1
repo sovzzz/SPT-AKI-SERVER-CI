@@ -1,4 +1,4 @@
-
+mkdir distr
 git clone https://dev.sp-tarkov.com/SPT-AKI/Server.git
 # 进入Server文件夹
 cd Server
