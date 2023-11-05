@@ -29,8 +29,13 @@ jobs:
             echo "::set-output name=artifact_path::$_.FullName"
           }
 
-      - name: Upload separate artifacts
-        run: |
-          echo "Uploading separate artifacts..."
-          echo "Artifact name: ${{ steps.create-artifacts.outputs.artifact_name }}"
-          echo "Artifact path: ${{ steps.create-artifacts.outputs.artifact_path }}"
+      #- name: Upload separate artifacts
+       # run: |
+         # echo "Uploading separate artifacts..."
+         # echo "Artifact name: ${{ steps.create-artifacts.outputs.artifact_name }}"
+         # echo "Artifact path: ${{ steps.create-artifacts.outputs.artifact_path }}"
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.create-artifacts.outputs.artifact_name }}
+          path: ${{ steps.create-artifacts.outputs.artifact_path }}
