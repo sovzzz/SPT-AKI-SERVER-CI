@@ -20,22 +20,8 @@ jobs:
       - name: Run build.ps1
         run: .\BuildServer.ps1
 
-      - name: Create separate artifacts
-        id: create-artifacts
-        run: |
-          Get-ChildItem -Path ./distr/*.zip | ForEach-Object {
-            $artifact_name = $_.BaseName
-            echo "::set-output name=artifact_name::$artifact_name"
-            echo "::set-output name=artifact_path::$_.FullName"
-          }
-
-      #- name: Upload separate artifacts
-       # run: |
-         # echo "Uploading separate artifacts..."
-         # echo "Artifact name: ${{ steps.create-artifacts.outputs.artifact_name }}"
-         # echo "Artifact path: ${{ steps.create-artifacts.outputs.artifact_path }}"
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.create-artifacts.outputs.artifact_name }}
-          path: ${{ steps.create-artifacts.outputs.artifact_path }}
+          name: my-artifacts
+          path: ./distr/*.zip
