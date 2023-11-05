@@ -38,7 +38,7 @@ foreach ($branch in $branches) {
     # 拼接压缩包的名称，包含分支名和当前日期
     $zipName = "Aki.Server-b.$cleanBranch-v.$($AkiMeta.akiVersion)-$date.zip"
     # 压缩build文件夹，命名为压缩包的名称，放在上上级目录的distr文件夹里
-    Compress-Archive -Path build -DestinationPath ..\..\distr\$zipName
+    Compress-Archive -Path build -DestinationPath ..\..\..\distr\$zipName
     # 返回上一级目录
     cd ..
     cd ..
