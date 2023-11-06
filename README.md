@@ -47,6 +47,9 @@ d-date,编译日期
 
 1. 安装Git、Git LFS和AKI指定版本的Node.js
 2. 运行ps1脚本
-# 免责声明
+# 声明
 该项目不属于Battle State或者SPT-AKI。
+
 所有编译结果均未经测试，下载即代表你愿意承担相应风险，本人不对其负任何责任。
+
+网盘属于付费空间，随时可能停用。如果想要支持，请到[这里](https://afdian.net/a/Ubisoviet)支持我。
