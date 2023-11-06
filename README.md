@@ -1,7 +1,7 @@
 # 秋-塔科夫单机每日编译脚本
 ## 运行状态
 
-![example workflow](https://github.com/sovzzz/spt/actions/workflows/build.yml/badge.svg)
+![example workflow](https://github.com/sovzzz/SPT-AKI-SERVER-CI/actions/workflows/build.yml/badge.svg)
 
 ## 如何分辨编译的各个版本
 
@@ -47,3 +47,6 @@ d-date,编译日期
 
 1. 安装Git、Git LFS和AKI指定版本的Node.js
 2. 运行ps1脚本
+# 免责声明
+该项目不属于Battle State或者SPT-AKI。
+所有编译结果均未经测试，下载即代表你愿意承担相应风险，本人不对其负任何责任。
