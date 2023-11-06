@@ -1,5 +1,4 @@
-name: Build and Upload Artifacts
-
+name: Build and Upload
 on:
   schedule:
     - cron: '0 4 * * *'
