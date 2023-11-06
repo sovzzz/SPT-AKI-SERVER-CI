@@ -15,7 +15,7 @@ jobs:
       - name: setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.0' # 指定所需的 .NET 版本
+          dotnet-version: '6.x' # 指定所需的 .NET 版本
 
       - name: Checkout code
         uses: actions/checkout@v2
