@@ -40,10 +40,12 @@ jobs:
           name: my-artifacts
 
       - name: Upload to WebDAV
-        uses: tszalbot/action-upload-webdav@v1
+        uses: bxb100/action-upload@main
         with:
-            webdav_address: ${{secrets.address}}
-            webdav_username: ${{secrets.username}}
-            webdav_password: ${{secrets.password}}
-            webdav_upload_path: "/AkiServer"
-            files: "*.zip"
+          provider: webdav
+          provider_options: |
+            endpoint=${{ secrets.address }}
+            username=${{ secrets.username }}
+            password=${{ secrets.password }}
+            root=/AkiServer
+          include: '*.zip'
