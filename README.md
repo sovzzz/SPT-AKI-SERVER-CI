@@ -47,6 +47,12 @@ d-date,编译日期
 
 1. 安装Git、Git LFS和AKI指定版本的Node.js
 2. 运行ps1脚本
+
+# 关于启动器
+另一个ps1脚本是编译启动器，由于更新不频繁，没有设置定时运行。你可以fork到你的仓库自己运行一遍然后下载构件。
+如果你没有设置网盘WebDav，会报错，但是构件是正常的。
+启动器的网盘下载在[这里](https://github.com/sovzzz/SPT-AKI-SERVER-CI/actions/runs/6771135719)（提取码9684）
+
 # 声明
 该项目不属于Battle State或者SPT-AKI。
 
