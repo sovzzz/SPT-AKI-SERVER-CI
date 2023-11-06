@@ -1,7 +1,8 @@
 name: Weekly Build Launcher
 
 on:
-
+  schedule:
+    - cron: '0 5 * * 1'
   workflow_dispatch:
 
 jobs:
