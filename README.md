@@ -1,5 +1,7 @@
 # 秋-塔科夫单机每日编译
-![example workflow](https://github.com/github/docs/actions/workflows/build.yml/badge.svg)
+## 运行状态
+
+![example workflow](https://github.com/sovzzz/spt/actions/workflows/build.yml/badge.svg)
 
 ## 如何分辨编译的各个版本
 
