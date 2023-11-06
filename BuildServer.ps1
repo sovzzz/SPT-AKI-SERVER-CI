@@ -29,7 +29,7 @@ foreach ($branch in $branches) {
     # 获取当前日期，格式为yyyy-MM-dd
     # 进入build文件夹
     cd build
-    $date = Get-Date -Format "yyyy-MM-dd"
+    $date = Get-Date -Format "yyyy.MM.dd"
     $AkiMeta = (Get-Content ./Aki_Data/Server/configs/core.json |  ConvertFrom-Json -AsHashtable)
     # 拼接压缩包的名称，包含分支名和当前日期
     #$zipName = "Aki.Server-v.$($Akimeta.akiVersion)-b.$branch-$date.zip"
