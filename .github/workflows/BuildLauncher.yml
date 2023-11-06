@@ -1,0 +1,53 @@
+name: My Weekly Workflow
+
+on:
+  # 每周一运行
+  schedule:
+    - cron: '0 5 * * 1'
+  # 手动触发
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: setup dotnet
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.0' # 指定所需的 .NET 版本
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run build.ps1
+        run: .\BuildLauncher.ps1
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifacts
+          path: ./dist/*.zip
+          
+  upload:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifacts
+
+      - name: Upload to WebDAV
+        uses: bxb100/action-upload@main
+        with:
+          provider: webdav
+          provider_options: |
+            endpoint=${{ secrets.address }}
+            username=${{ secrets.username }}
+            password=${{ secrets.password }}
+            root=/AkiLauncher
+          include: '*.zip'
