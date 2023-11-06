@@ -1,4 +1,4 @@
-name: My Weekly Workflow
+name: Weekly Build Launcher
 
 on:
   # 每周一运行
@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: setup dotnet
-      - uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.0' # 指定所需的 .NET 版本
 
@@ -28,7 +28,7 @@ jobs:
         with:
           name: my-artifacts
           path: ./dist/*.zip
-          
+
   upload:
     runs-on: ubuntu-latest
     needs: build
