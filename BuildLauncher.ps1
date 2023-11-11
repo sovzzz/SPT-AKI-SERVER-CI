@@ -18,7 +18,7 @@ foreach ($branch in $branches) {
     #Launcher/project/Build
     $date = Get-Date -Format "yyyy.MM.dd"
     $cleanBranch = $branch -replace '[\\/:"*?<>|]', '_'
-    $zipName = "Aki.Launcher-b.$cleanBranch-$date.zip"
+    $zipName = "Aki.Launcher-b.$cleanBranch-d.$date.zip"
     Compress-Archive -Path * -DestinationPath ..\..\..\dist\$zipName
     cd ..
     cd ..
