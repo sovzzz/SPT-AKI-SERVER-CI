@@ -19,8 +19,11 @@ jobs:
         with:
           node-version: '20.11.1'
 
-      - name: Run build.ps1
+      - name: Run script1
         run: .\BuildServer.ps1
+
+      - name: Run script2
+        run: .\BuildLauncher.ps1
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
