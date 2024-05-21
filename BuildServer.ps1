@@ -37,8 +37,10 @@ foreach ($branch in $branches) {
     $cleanBranch = $branch -replace '[\\/:"*?<>|]', '_'
     # 拼接压缩包的名称，包含分支名和当前日期
     $zipName = "Aki.Server-b.$cleanBranch-v.$($AkiMeta.akiVersion)-t.$($AkiMeta.compatibleTarkovVersion)-d.$date.zip"
+    $sevenZipName = "Aki.Server-b.$cleanBranch-v.$($AkiMeta.akiVersion)-t.$($AkiMeta.compatibleTarkovVersion)-d.$date.zip"
     # 压缩build文件夹，命名为压缩包的名称，放在上上级目录的distr文件夹里
-    Compress-Archive -Path * -DestinationPath ..\..\..\distr\$zipName
+    #Compress-Archive -Path * -DestinationPath ..\..\..\distr\$zipName
+    7z a "..\..\..\distr\$sevenZipName" *
     # 返回上一级目录
     cd ..
     cd ..
